@@ -1,0 +1,100 @@
+<title>CG-M3-20 v2 Standard Views</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=B612+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: one A-series drawing sheet, full width, with a short header strip above it */
+:root {
+  --paper: #f3f4ef;
+  --ink: #1d2124;
+  --ink-2: #5d6468;
+  --hatch: #8a9094;
+  --accent: #1f56c4;
+  --tint: rgba(31, 86, 196, 0.09);
+  --page: #e6e8e2;
+  --font-ui: "B612", "Segoe UI", system-ui, sans-serif;
+  --font-dwg: "B612 Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15191c; --ink: #d8ddd7; --ink-2: #8e979b; --hatch: #5f686d;
+    --accent: #7ea6ff; --tint: rgba(126, 166, 255, 0.11); --page: #0e1113;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15191c; --ink: #d8ddd7; --ink-2: #8e979b; --hatch: #5f686d;
+  --accent: #7ea6ff; --tint: rgba(126, 166, 255, 0.11); --page: #0e1113;
+  color-scheme: dark;
+}
+body { background: var(--page); color: var(--ink); font-family: var(--font-ui); }
+.wrap { max-width: 1640px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 32px; display: grid; gap: 14px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+h1 { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.02em; margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--ink-2); font-size: 0.85rem; max-width: 70ch; }
+.scroll { overflow-x: auto; border: 1px solid var(--hatch); }
+svg.sheet { display: block; width: 100%; min-width: 980px; height: auto; color: var(--ink); font-family: var(--font-dwg); }
+figcaption { color: var(--ink-2); font-size: 0.85rem; line-height: 1.5; max-width: 90ch; }
+figure { margin: 0; display: grid; gap: 10px; }
+
+/* drawing line types */
+.paper { fill: var(--paper); }
+.frame { fill: none; stroke: var(--ink); stroke-width: 2.4; }
+.vl { fill: none; stroke: var(--ink); stroke-width: 0.9; stroke-linejoin: round; stroke-linecap: round; }
+.vl2 { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.vis { fill: none; stroke: var(--ink); stroke-width: 2.1; stroke-linejoin: round; }
+.nofill { fill: none; }
+.thin { fill: none; stroke: var(--ink); stroke-width: 0.9; }
+.dash { stroke-dasharray: 6 4; }
+.hid { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 7 4; stroke-linejoin: round; }
+.sec { fill: url(#hatch); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.pad { fill: url(#hatchacc); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.hl { stroke: var(--hatch); stroke-width: 0.9; }
+.hla { stroke: var(--accent); stroke-width: 1.1; }
+.intf { fill: var(--accent); stroke: none; opacity: 0.85; }
+.band { fill: var(--tint); stroke: none; }
+.ctr { fill: none; stroke: var(--ink-2); stroke-width: 0.9; stroke-dasharray: 22 4 3 4; }
+.phantom { fill: none; stroke: var(--ink-2); stroke-width: 1.1; stroke-dasharray: 16 3 3 3 3 3; }
+.ext { stroke: var(--ink-2); stroke-width: 0.8; }
+.dim { stroke: var(--ink); stroke-width: 0.9; fill: none; }
+.ahf { fill: var(--ink); }
+.ahacc { fill: var(--accent); }
+.load { stroke: var(--accent); stroke-width: 3; }
+.cut { stroke: var(--ink); stroke-width: 3.2; }
+.cutthin { stroke: var(--ink-2); stroke-width: 0.8; stroke-dasharray: 22 4 3 4; }
+.grid { stroke: var(--hatch); stroke-width: 0.6; stroke-dasharray: 2 4; }
+.axis { stroke: var(--ink); stroke-width: 1.2; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; }
+.op { fill: var(--paper); stroke: var(--accent); stroke-width: 2.5; }
+.tbl { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+
+/* drawing lettering */
+svg.sheet text { fill: var(--ink); }
+.t { font-size: 15px; }
+.ts { font-size: 13px; fill: var(--ink-2); }
+svg.sheet .ts { fill: var(--ink-2); }
+svg.sheet .tsacc { font-size: 13px; fill: var(--accent); font-weight: 700; letter-spacing: 0.04em; }
+.tag { font-size: 20px; font-weight: 700; }
+.vt { font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-decoration: underline; }
+svg.sheet .vs { font-size: 13px; fill: var(--ink-2); letter-spacing: 0.04em; }
+.th { font-size: 15px; font-weight: 700; letter-spacing: 0.12em; }
+.td { font-size: 13.5px; }
+.tdv { font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tn { font-size: 13.5px; }
+svg.sheet .tk { font-size: 11px; fill: var(--ink-2); letter-spacing: 0.12em; }
+.tv { font-size: 15px; font-weight: 700; }
+.ttl { font-size: 22px; font-weight: 700; letter-spacing: 0.03em; }
+svg.sheet .zone { font-size: 11px; fill: var(--ink-2); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>CG-M3-20 v2 · Standard views</h1>
+    <p>Views are hidden-line projections of an exact B-rep rebuild of <code>compliant_gear_v2.scad</code>. Scroll sideways on narrow screens.</p>
+  </header>
+  <figure>
+    <div class="scroll">
+%%SVG%%
+    </div>
+    <figcaption>Third-angle layout: the top view (gear face) sits above the front view, and the right-side view is to the right of the front view. Hidden lines are shown only for the bore; the slots and fingers would turn the edge views solid. Detail A is a cropped isometric of one tooth, showing the 45° wedge fingers that close the tip.</figcaption>
+  </figure>
+</div>

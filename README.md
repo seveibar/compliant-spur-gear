@@ -38,6 +38,8 @@ In a section through the cap, the wedges form two interleaved rows of triangles,
 | `compliant_gear.stl` | Exported gear (default parameters) |
 | `compliant_gear_v2.scad` | v2 model with 45° wedge fingers |
 | `compliant_gear_v2.stl` | Exported v2 gear |
+| `compliant_gear_v2.step` | v2 as an exact B-rep (STEP), rebuilt in build123d |
+| `drawing/v2-views/` | v2 standard views sheet (top / front / right / iso) and its scripts |
 | `pinion.stl` | Plain 16-tooth mating pinion |
 | `drawing/compliant-gear-drawing.html` | Engineering drawing sheet (open in a browser) |
 | `drawing/gen.py` | Generates the drawing from the same involute math |
