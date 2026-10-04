@@ -22,12 +22,22 @@ developed section through the cap (looking radially):
 
 ![Cross-sections through finger layers 1 and 2](preview_sections.png)
 
+## v2: print-friendly finger cap
+
+`compliant_gear_v2.scad` has the same mechanism, but the fingers are 45° wedges instead of flat layers. When the gear prints flat, each v1 finger has a 90° overhang underneath. In v2 every downward-facing surface of the cap is at 45° (set by `overhang_angle`), so it prints without supports, and there's no thin layer gap to keep open.
+
+In a section through the cap, the wedges form two interleaved rows of triangles, one row rooted in each wall. The tips still stop `cap_clearance` short of the opposite wall. The zig-zag period is chosen so the sloped faces have at least that much clearance (default: 4 L + 4 R wedges, 3.0 mm period).
+
+![v2 section through the cap](preview_v2_cap_section.png)
+
 ## Files
 
 | File | What it is |
 |---|---|
 | `compliant_gear.scad` | Parametric model (gear, mating pinion, assembly, sections) |
 | `compliant_gear.stl` | Exported gear (default parameters) |
+| `compliant_gear_v2.scad` | v2 model with 45° wedge fingers |
+| `compliant_gear_v2.stl` | Exported v2 gear |
 | `pinion.stl` | Plain 16-tooth mating pinion |
 | `drawing/compliant-gear-drawing.html` | Engineering drawing sheet (open in a browser) |
 | `drawing/gen.py` | Generates the drawing from the same involute math |
@@ -53,6 +63,7 @@ A rough cantilever estimate for rigid resin (E ≈ 3.5 GPa) is about 75 N/mm per
 ```sh
 openscad -o compliant_gear.stl -D 'show="gear"'   compliant_gear.scad
 openscad -o pinion.stl         -D 'show="pinion"' compliant_gear.scad
+openscad -o compliant_gear_v2.stl -D 'show="gear"' compliant_gear_v2.scad
 python3 drawing/gen.py   # regenerate the drawing
 ```
 
@@ -60,7 +71,7 @@ python3 drawing/gen.py   # regenerate the drawing
 
 ## Printing
 
-The default gaps (0.30 mm between layers, about 0.27 mm finger tips) are meant for SLA, SLS or MJF. For FDM, use a larger module and increase `layer_gap` and `cap_clearance`.
+v1's defaults (0.30 mm between layers, about 0.27 mm finger tips) are meant for SLA, SLS or MJF. For FDM, use v2: its cap has no unsupported overhangs. The wedge tips are still fine features, so a larger module helps.
 
 ## License
 
