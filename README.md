@@ -41,6 +41,7 @@ In a section through the cap, the wedges form two interleaved rows of triangles,
 | `compliant_gear_v2.step` | v2 as an exact B-rep (STEP), rebuilt in build123d |
 | `drawing/v2-views/` | v2 standard views sheet (top / front / right / iso) and its scripts |
 | `pinion.stl` | Plain 16-tooth mating pinion |
+| `test_stand.scad` / `test_stand.stl` | Two-pillar stand for meshing two 20T gears to test backlash |
 | `drawing/compliant-gear-drawing.html` | Engineering drawing sheet (open in a browser) |
 | `drawing/gen.py` | Generates the drawing from the same involute math |
 
@@ -70,6 +71,12 @@ python3 drawing/gen.py   # regenerate the drawing
 ```
 
 `show` also accepts `assembly` and `tooth_sections`.
+
+## Backlash test stand
+
+`test_stand.scad` is a base plate with two pillars for meshing two of the 20-tooth gears. Each pillar has a Ø16 shoulder that the gear's hub sits on, 2 mm above the plate, so the teeth and spring walls never touch the floor. Above the shoulder is a Ø7.70 pin, which leaves 0.15 mm of radial clearance in the Ø8 bore.
+
+The gears preload each other, which pushes them apart against the outer sides of their pins. To compensate, the pins are 2 × 0.15 mm closer than the nominal 60.00 mm center distance, so the gears mesh at exactly 60.00 mm. Set `extra_center_distance` above 0 to open the mesh and make backlash appear.
 
 ## Printing
 
